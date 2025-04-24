@@ -1,0 +1,15 @@
+{:deps {:aliases [:shadow]}
+ :dev-http {8080 ["dev"]}
+ :builds {:dev {:target :browser
+                :entries [eywa-docs.main]
+                :module-loader true
+                :modules {:main {:entries [eywa-docs.main]
+                                 :init-fn eywa-docs.main/start!}
+                          :markdown {:entries [toddler.md]
+                                     :depends-on #{:main}}
+                          :docs {:entries [eywa-docs.docs]
+                                 :depends-on #{:main}}}
+                :output-dir "dev/js"}
+          :production {:target :browser
+                       :module-loader true
+                       :output-dir "target/js"}}}

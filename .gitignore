@@ -1,0 +1,14 @@
+dev/css/
+dev/js/
+dev/docs.index.edn
+build/css/
+build/js/
+node_modules/
+
+.clj-kondo/
+.cpcache/
+.lsp/
+.shadow-cljs/
+
+package-lock.json
+src-tauri/

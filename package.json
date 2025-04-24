@@ -1,0 +1,28 @@
+{
+  "name": "eywa-docs",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npx shadow-cljs watch dev",
+    "import-components": "clj -X toddler.ui.import/components :ns eywa-docs :dir src",
+    "release": "clj -T:build release",
+    "release-tauri": "clj -X:shadow:css && npx shadow-cljs release tauri"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "simplebar-react": "^3.3.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/api": "^2.2.0",
+    "@tauri-apps/cli": "^2.2.7",
+    "highlight.js": "^11.11.1",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-emoji": "^3.0.0",
+    "shadow-cljs": "^2.28.21"
+  }
+}
