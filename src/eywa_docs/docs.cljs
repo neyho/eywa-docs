@@ -78,10 +78,10 @@
 (defnc logo
   []
   (let [theme (hooks/use-context app/theme)
-        logo (str "https://raw.githubusercontent.com/gersak/toddler/refs/heads/main/template/assets/your_logo_" theme ".png")
+        logo (str "https://raw.githubusercontent.com/neyho/eywa-docs/refs/heads/master/dev/img/eywa_" theme ".svg")
         desktop (css :flex :grow :justify-center :items-center {:min-height "100px"})
         layout (toddler/use-layout)
-        mobile (css :ml-2 :flex :items-center {:max-height "16px"})]
+        mobile (css :ml-2 :flex :items-center {:max-height "32px"})]
     (d/div
      {:class (case layout
                :mobile mobile
@@ -89,7 +89,7 @@
                nil)}
      (d/img
       {:src logo
-       :className (css {:max-height "16px"})}))))
+       :className (css {:max-height "32px"})}))))
 
 (defnc _Docs
   []

@@ -31,7 +31,7 @@
    (update :aliases merge css/aliases)
    (cb/start)
    (cb/index-path (io/file "src") {})
-   (cb/index-path (io/file ".." ".." ".." "toddler" "ui" "src") {})))
+   (cb/index-path (io/file ".." "toddler" "ui" "src") {})))
 
 (comment
   (.isDirectory (io/file ".." ".." ".." "toddler" "ui" "src")))
