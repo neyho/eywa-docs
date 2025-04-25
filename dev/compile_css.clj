@@ -14,8 +14,8 @@
   ([dir]
    (let [result
          (-> @css-ref
-             (cb/generate '{:main {:include [eywa-docs.main
-                                             eywa-docs*
+             (cb/generate '{:main {:include [eywa.main
+                                             eywa*
                                              toddler.ui*
                                              toddler.docs]}})
              (cb/write-outputs-to (io/file dir "css")))]
@@ -84,8 +84,8 @@
                       :main)]
     (-> (init)
         (cb/generate {release-key
-                      {:include '[eywa-docs.main
-                                  eywa-docs*
+                      {:include '[eywa.main
+                                  eywa*
                                   toddler.ui*
                                   toddler.docs]}})
         (cb/write-outputs-to (io/file "target" "css")))))
