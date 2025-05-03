@@ -1,5 +1,5 @@
 {:deps {:aliases [:shadow]}
- :dev-http {8080 ["dev" "web"]}
+ :dev-http {9000 ["dev" "web"]}
  :builds {:dev {:target :browser
                 :entries [eywa.main]
                 :module-loader true
@@ -9,6 +9,7 @@
                                      :depends-on #{:main}}
                           :docs {:entries [eywa.docs]
                                  :depends-on #{:main}}}
+                :closure-defines {eywa.main/ROUTER_BASE ""}
                 :output-dir "dev/js"}
           :production {:target :browser
                        :module-loader true

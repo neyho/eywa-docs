@@ -29,10 +29,10 @@
                          nil
                          current)))
      (dissoc :output-to :output-dir)
-     (assoc :closure-defines `{eywa-docs.docs.main/ROUTER_BASE ""
-                               eywa-docs.docs.lazy/MD_BASE ""
-                               eywa-docs.docs.lazy/MD_REFRESH_PERIOD 0
-                               eywa-docs.docs.lazy/SEARCH_INDEX ~(str "/docs.index." salt ".edn")}
+     (assoc :closure-defines `{eywa.main/ROUTER_BASE ""
+                               eywa.docs.lazy/MD_BASE ""
+                               eywa.docs.lazy/MD_REFRESH_PERIOD 0
+                               eywa.docs.lazy/SEARCH_INDEX ~(str "/docs.index." salt ".edn")}
             :asset-path "/js"))))
 
 (letfn [(->link [route]

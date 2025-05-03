@@ -1,3 +1,7 @@
+
+<div id="in-short">
+</div>
+
 # Introduction
 
 **EYWA** is here to help you eliminate your waste activities by using set of services
@@ -18,5 +22,3 @@ Module administration is discussed in **IAM**.
 Each module has defined tabs that are specific for that module. By clicking on tabs
 user opens content that enables user to interact with EYWA.
 
-<div id="in-short">
-</div>
