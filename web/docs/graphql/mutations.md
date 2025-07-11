@@ -8,8 +8,8 @@ three friends: Chuck Norris, Steven Seagal and Jackie Chan.
 John decided to move White House and he stated that his friends are
 currently: Chuck Norris, Steven Seagal and Bruce Lee.
 
-Because John has **synced** changes in his life he now has 3 friends and Jackie
-Chan is no longer one of them.
+Because John has **synced** changes in his life he now has 3 friends and Bruce
+Lee is no longer one of them.
 
 :::warning Think of relations
 Be aware that when entity has one to many or many to many

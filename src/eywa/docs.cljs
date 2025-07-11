@@ -15,6 +15,9 @@
    [toddler.search :as search]
    [eywa.docs.graphql :refer [GraphQL]]
    [eywa.docs.data :refer [Data]]
+   [eywa.docs.advanced :refer [Advanced]]
+   [eywa.docs.iam :refer [IAM]]
+   [eywa.docs.overview :refer [Overview]]
    [eywa.docs.util :as util]
    [shadow.css :refer [css]]))
 
@@ -34,20 +37,33 @@
                 ($ util/themed-image {:url "intro/in_short"})))))))
 
 (def components
-  [{:id :eywa.intro
+  [{:id :eywa.overview
     :landing 100
     :max-width 800
-    :segment "intro"
-    :render Intro
-    :name "Intro"}
+    :segment "overview"
+    :render Overview
+    :name "Overview"}
+   #_{:id :eywa.quickstart
+      :segment "quickstart"
+      :name "Quick Start"
+      :render nil}
+   {:id :eywa.data
+    :segment "data"
+    :hash "data-modeling-that-thinks-ahead"
+    :name "Data Modeling"
+    :render Data}
    {:id :eywa.graphql
     :segment "graphql"
     :name "GraphQL"
     :render GraphQL}
-   {:id :eywa.data
-    :segment "data"
-    :name "Data"
-    :render Data}])
+   {:id :eywa.iam
+    :segment "iam"
+    :name "IAM"
+    :render IAM}
+   {:id :eywa.advanced
+    :segment "advanced"
+    :name "Advanced"
+    :render Advanced}])
 
 (defnc actions
   []
@@ -102,11 +118,21 @@
   ($ docs/page
      {:max-width 1200
       :className (css
+                  ["& table" :mt-4 :rounded-xl :p-4 :bg-normal+]
+                  ["& table thead th" :py-3]
+                  ["& table td" :px-3]
+                  ["& table thead, & table tbody" :px-2]
                   ["& .toddler-markdown section ul li" :my-1]
+                  ["& .toddler-markdown section hr" :my-8]
+                  ; ["& .toddler-markdown .code-wrapper" :relative]
+                  ; ["& .toddler-markdown .code-wrapper .copy-button" :absolute :right-2 :top-1]
+                  ["& .component-list .component > a.name" {:font-size "14px"}]
+                  ["& .component-list .subcomponent > a.name" {:font-size "12px"}]
                   ["& .container-block" :my-8 :p-4 :border-normal
                    :text-xxs :font-medium
                    :rounded-xl]
                   ["& .container-block .icon" :color]
+                  ["& .container-block ul li" :text-xxs]
                   ["& .container-block-title" :mt-0 :font-semibold :flex :items-center]
                   ["& .container-block.tip"
                    {:background-color "var(--background-positive)"}]

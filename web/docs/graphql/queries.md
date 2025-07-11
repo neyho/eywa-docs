@@ -65,7 +65,11 @@ every entity search query accepts **_order_by** field that is list of _orderByOp
 ## Get
 
 Takes dataset entity unique identifier and arguments to pinpoint target row, selection that specifies
-which attributes and relations selection should be returned (<a id="open-get">visual</a>). Each entity
+which attributes and relations selection should be returned. 
+
+<div id="open-get-anchor"></div>
+
+Each entity
 will have generic get query in camelCase entity name prefixed by `get`. For example 
 <a id="open-datasets-model">dataset</a> following get methods are generated:
 
@@ -117,7 +121,9 @@ And response should be:
 }
 ```
 
-`Wou, this is so cool. What else can I do?`
+:::info Newbie
+Wou, this is so cool. What else can I do?
+:::
 
 It is possible to pull data from related entities by specifying directed relation label and fields.
 Let's pull all attribute name and types and all dataset versions where this entity is used.
@@ -204,25 +210,29 @@ Let's pull all attribute name and types and all dataset versions where this enti
   }
 }
 ```
-`I'm actually crying now... Are you saying that I can just ask what I wan't and it will be provided.
-It's like best religion ever!`
+:::info Newbie
+I'm actually crying now... Are you saying that I can just ask what I wan't and I will GET it?
+It's like best religion ever!
+:::
 
-It is possible to pull data for related entites by referencing labels on modeled <<Relations,relations>>. This
-is not restricted to one model. *ALL* models are combined in one big data model with all entities and
+It is possible to pull data for related entites by referencing labels on modeled relations. This
+is not restricted to one model. **ALL** models are combined in one big data model with all entities and
 relations reconciled and available through single GraphQL endpoint. Everything is connected!
 
-`Don't play smart with me! Is there anything else?`
+:::info Newbie
+Don't play smart with me! Is there anything else?`
+:::
 
-To narrow subselection search, user can set parameters for relation. Lets try to find all attributes
-that are of type _string_ or _float_.
+To narrow subselection search, user can set the parameters for relation. Lets try to find all attributes
+that are of a type _string_ or _float_.
 
 #### QUERY
-```
+```graphql
 {
   getDatasetEntity(name:"Dataset Entity") {
     name
     type
-    attributes(_where:{_or:[{type:{_eq:string}} {type:{_eq:float}}]} _order_by:[{name:desc}]) {
+    attributes(_where:{_or:[{type:{_eq:string}} {type:{_eq:float}}]} _order_by:{name:desc}) {
       name
       type
     }
@@ -259,7 +269,9 @@ that are of type _string_ or _float_.
 
 ## Search
 Search query accepts attribute arguments to pinpoint target rows and selection that
-specifies which attributes and relations should be returned. (<a id="open-search">visual</a>)
+specifies which attributes and relations should be returned.
+
+<div id="open-search-anchor"></div>
 
 Search result will always return list of results. To control how search results will
 be returned EYWA will generate search queries that will accept
@@ -507,12 +519,12 @@ in query attributes at desired level.
 }
 ```
 
-When executing query that refers related entity in selection it is possible to order
+When executing query that refers to related entity in selection it is possible to order
 requested records if relation returns multiple result. This is the case when entity has
 __one to many__ or __many to many__ relation. Example bellow shows how nested selection
 can control order of returned results.
 
-#### Query with order of child selection
+#### Query
 ```graphql
 {
   searchDatasetEntity (name:{_eq:"Dataset Entity Attribute"}) {
@@ -557,7 +569,8 @@ can control order of returned results.
 
 ## Focused Query
 World is a complex place, and business rules are usually over complicated, inherited, personalized
-and opinionated client view of their business. Each would say that `This is the way`. 
+and opinionated client view of their business. Each client would say that `This is the way!`.
+So many ways...
 
 To navigate throught this data jungle EYWA provides set of tools and one of these 
 tools is search query as mentioned.
@@ -569,7 +582,9 @@ parameters. What does this meen?
 EYWA search queries can be focused on **any level** of selection for 
 **any attribute**.
 
-`This is one ugly bastard.`
+:::danger Newbie
+This is one ugly bastard.
+:::
 
 
 ```graphql

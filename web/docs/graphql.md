@@ -13,13 +13,20 @@ There are 3 generic GraphQL queries and 5 generic GraphQL mutations that
 EYWA will generate from combined deployed Dataset Models.
 
 ## Queries
-* [Get](./graphql/queries/#get)
-* [Search](./graphql/queries/#search)
-* [SearchTree](./graphql/queries/#search-tree)
+* [Get](./graphql/queries#get)
+* [Search](./graphql/queries#search)
+* [SearchTree](./graphql/queries#search-tree)
 
 ## Mutations
-* [Sync](./graphql/mutations/#sync)
-* [Stack](./graphql/mutations/#stack)
-* [Slice](./graphql/mutations/#slice)
+* [Sync](./graphql/mutations#sync)
+* [Stack](./graphql/mutations#stack)
+* [Slice](./graphql/mutations#slice)
 * Delete
-* [Purge](./graphql/mutations/#purge)
+* [Purge](./graphql/mutations#purge)
+
+
+## Extend
+
+ * [Shards](./graphql/extend)
+ * [Hooks](./graphql/extend#hooks)
+ * [Subscriptions](./graphql/extend#subscriptions)

@@ -50,11 +50,16 @@ textarea::placeholder {
   color: #828282;
 }
 
+.components-wrapper {
+  font-family: "Raleway";
+}
+
 
 /* ==================== LIGHT ==================== */
 
 html[data-theme="light"] {
-  --font-family: 'Montserrat';
+  /*--font-family: 'Montserrat';*/
+  --font-family: 'Raleway';
 
   /* Background */
   --background: #ffffff;
@@ -219,7 +224,8 @@ html[data-theme="light"] {
 /* ======================== DARK ======================= */
 
 html[data-theme="dark"] {
-  --font-family: 'Montserrat';
+  /*--font-family: 'Montserrat';*/
+  --font-family: 'Raleway';
 
   /* Background */
   --background: #262626;

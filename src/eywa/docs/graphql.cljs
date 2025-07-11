@@ -42,9 +42,29 @@
   []
   (let [{ww :width} (toddler/use-window-dimensions)
         {:keys [hash]} (router/use-location)
-        {:keys [show]} (router/use-query)]
+        {:keys [show]} (router/use-query)
+        max-width (min ww 500)]
     ($ ui/row
-       {:style {:max-width (min ww 500)}}
+       {:style {:max-width max-width}
+        :align :center}
+
+       ($ md/watch-url
+          {:url (router/use-with-base "/graphql/queries.md")
+           :style {:max-width max-width}})
+       ($ toddler/portal
+          {:locator #(.getElementById js/document "open-get-anchor")}
+          ($ ui/row
+             {:align :center}
+             ($ ui/button
+                {:id "open-get"}
+                "Visual")))
+       ($ toddler/portal
+          {:locator #(.getElementById js/document "open-search-anchor")}
+          ($ ui/row
+             {:align :center}
+             ($ ui/button
+                {:id "open-search"}
+                "Visual")))
        ($ util/mount-modal-image
           {:id "open-get"
            :url "queries/get"
@@ -57,8 +77,7 @@
            :width 400})
        ($ util/mount-modal-image
           {:id "open-datasets-model"
-           :url "queries/datasets_model"})
-       ($ md/watch-url {:url (router/use-with-base "/graphql/queries.md")}))))
+           :url "queries/datasets_model"}))))
 
 (defnc Mutations
   {:wrap [(router/wrap-rendered :eywa.graphql.mutations)
@@ -78,11 +97,14 @@
              :hash "purge"}])]}
   []
   (let [ww (toddler/use-window-width)
-        img-width (min ww 360)]
+        img-width (min ww 360)
+        max-width (min ww 500)]
     ($ ui/row
-       {:style {:max-width (min ww 500)}}
+       {:style {:max-width max-width}}
        ($ ui/column
-          ($ md/watch-url {:url (router/use-with-base "/graphql/mutations.md")})
+          ($ md/watch-url
+             {:url (router/use-with-base "/graphql/mutations.md")
+              :style {:max-width max-width}})
           ($ util/mount-image
              {:id "sync-mutation"
               :width img-width
@@ -111,25 +133,52 @@
   {:wrap [(router/wrap-rendered :eywa.graphql.extend)
           (router/wrap-link
            :eywa.graphql.extend
-           [{:id :eywa.graphql.extend.types
-             :name "Types"
-             :hash "types"}
+           [{:id :eywa.graphql.extend.shards
+             :name "Shards"
+             :hash "shards"}
             {:id :eywa.graphql.extend.hooks
-             :name "HOOKS"
+             :name "Hooks"
              :hash "hooks"}
             {:id :eywa.graphql.extend.subscriptions
              :name "Subscriptions"
              :hash "subscriptions"}])]}
   []
-  ($ md/watch-url {:url (router/use-with-base "/graphql/extend.md")}))
+  (let [ww (toddler/use-window-width)
+        max-width (min ww 500)]
+    ($ ui/row
+       {:style {:max-width max-width}
+        :align :center}
+       ($ toddler/portal
+          {:locator #(.getElementById js/document "hooks-visual")}
+          ($ ui/row
+             {:align :center}
+             ($ ui/button
+                {:id "open-hooks-visual"}
+                "Visual")))
+       ($ util/mount-modal-image
+          {:id "open-hooks-visual"
+           :url "extend/hooks"
+           :className (css :p-6)
+           :width 400})
+       ($ md/watch-url
+          {:url (router/use-with-base "/graphql/extend.md")
+           :max-width max-width}))))
 
 (defnc InGeneral
   {:wrap [(router/wrap-rendered :eywa.graphql true)]}
   []
-  ($ md/watch-url {:url (router/use-with-base "/graphql.md")}))
+  (let [ww (toddler/use-window-width)
+        max-width (min ww 500)]
+    ($ ui/row
+       {:style {:max-width max-width}
+        :align :center}
+       ($ md/watch-url
+          {:url (router/use-with-base "/graphql.md")
+           :style {:max-width max-width}}))))
 
 (defnc GraphQL
-  {:wrap [(router/wrap-link
+  {:wrap [(router/wrap-rendered :eywa.graphql)
+          (router/wrap-link
            :eywa.graphql
            [{:id :eywa.graphql.queries
              :segment "queries"
@@ -148,5 +197,6 @@
           ($ InGeneral)
           ($ Queries)
           ($ Mutations)
+          ($ Extend)
           #_($ ui/row
                {:style {:max-width (min width 800)}})))))

@@ -46,7 +46,6 @@
 (defnc Docs
   {:wrap [(md/wrap-show {:className ui.css/$md
                          :on-theme-change change-highlight-js})
-          (md/wrap-show {:className ui.css/$md})
           (md/wrap-base MD_BASE)
           (md/wrap-refresh MD_REFRESH_PERIOD)
           (search/wrap-index SEARCH_INDEX)
