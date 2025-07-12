@@ -11,6 +11,10 @@ node_modules/
 .shadow-cljs/
 *.old/
 .DS_STORE
+web/eywa/
+web/docs.index.edn
+target/
+PROJECT_SUMMARY.md
 
 package-lock.json
 src-tauri/

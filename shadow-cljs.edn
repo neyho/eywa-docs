@@ -10,7 +10,10 @@
                                      :depends-on #{:main}}
                           :docs {:entries [eywa.docs]
                                  :depends-on #{:main}}}
-                :closure-defines {eywa.main/ROUTER_BASE ""}
+                :closure-defines {eywa.main/ROUTER_BASE "eywa"
+                                  eywa.docs.lazy/MD_BASE "https://raw.githubusercontent.com/neyho/eywa-docs/refs/heads/master/web"
+                                  eywa.docs.lazy/MD_REFRESH_PERIOD 0
+                                  eywa.docs.lazy/SEARCH_INDEX "/eywa/docs.index.edn"}
                 :output-dir "dev/js"}
           :production {:target :browser
                        :module-loader true

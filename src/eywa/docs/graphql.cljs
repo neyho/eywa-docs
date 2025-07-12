@@ -49,7 +49,7 @@
         :align :center}
 
        ($ md/watch-url
-          {:url (router/use-with-base "/graphql/queries.md")
+          {:url "/docs/graphql/queries.md"
            :style {:max-width max-width}})
        ($ toddler/portal
           {:locator #(.getElementById js/document "open-get-anchor")}
@@ -67,17 +67,17 @@
                 "Visual")))
        ($ util/mount-modal-image
           {:id "open-get"
-           :url "queries/get"
+           :url "/docs/graphql/queries/get"
            :className (css :p-6)
            :width 400})
        ($ util/mount-modal-image
           {:id "open-search"
-           :url "queries/search"
+           :url "/docs/graphql/queries/search"
            :className (css :p-6)
            :width 400})
        ($ util/mount-modal-image
           {:id "open-datasets-model"
-           :url "queries/datasets_model"}))))
+           :url "/docs/graphql/queries/datasets_model"}))))
 
 (defnc Mutations
   {:wrap [(router/wrap-rendered :eywa.graphql.mutations)
@@ -103,31 +103,31 @@
        {:style {:max-width max-width}}
        ($ ui/column
           ($ md/watch-url
-             {:url (router/use-with-base "/graphql/mutations.md")
+             {:url "/docs/graphql/mutations.md"
               :style {:max-width max-width}})
           ($ util/mount-image
              {:id "sync-mutation"
               :width img-width
-              :url "/graphql/mutations/sync"})
+              :url "/docs/graphql/mutations/sync"})
           ($ util/mount-image
              {:id "stack-mutation"
               :width img-width
-              :url "/graphql/mutations/stack"})
+              :url "/docs/graphql/mutations/stack"})
           ($ util/mount-image
              {:id "slice-entities"
               :width (min ww 440)
               :className (css :my-4)
-              :url "/graphql/mutations/slice_entities"})
+              :url "/docs/graphql/mutations/slice_entities"})
           ($ util/mount-image
              {:id "slice-mutation"
               :width img-width
               :className (css :my-4)
-              :url "/graphql/mutations/slice"})
+              :url "/docs/graphql/mutations/slice"})
           ($ util/mount-image
              {:id "purge-mutation"
               :width img-width
               :className (css :my-4)
-              :url "/graphql/mutations/purge"})))))
+              :url "/docs/graphql/mutations/purge"})))))
 
 (defnc Extend
   {:wrap [(router/wrap-rendered :eywa.graphql.extend)
@@ -161,7 +161,7 @@
            :className (css :p-6)
            :width 400})
        ($ md/watch-url
-          {:url (router/use-with-base "/graphql/extend.md")
+          {:url "/docs/graphql/extend.md"
            :max-width max-width}))))
 
 (defnc InGeneral
@@ -173,7 +173,7 @@
        {:style {:max-width max-width}
         :align :center}
        ($ md/watch-url
-          {:url (router/use-with-base "/graphql.md")
+          {:url "/docs/graphql.md"
            :style {:max-width max-width}}))))
 
 (defnc GraphQL

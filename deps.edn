@@ -15,6 +15,6 @@
             :exec-fn toddler.search.docs/build-index}
            :build
            {:extra-paths ["build"]
-            :extra-deps {dev.gersak/toddler-template {:mvn/version "0.5.4"}
+            :extra-deps {dev.gersak/toddler-template {:local/root "/Users/robi/dev/toddler/template"}
                          io.github.clojure/tools.build {:mvn/version "0.10.7"}}
             :ns-default build}}}

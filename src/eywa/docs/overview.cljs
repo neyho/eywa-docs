@@ -29,7 +29,7 @@
              :hash "quickstart"}])]}
   []
   (let [{:keys [width height]} (layout/use-container-dimensions)
-        docs-url (router/use-with-base "/overview.md")]
+        docs-url "/docs/overview.md"]
     ($ ui/simplebar
        {:style {:height height}}
        ($ ui/row {:align :center}
@@ -45,7 +45,7 @@
                       "Click to see how?")))
              ($ util/mount-modal-image
                 {:id "in-short-visual"
-                 :url "overview/in_short"
+                 :url "/docs/overview/in_short"
                  :className (css :p-6)
                  :width 600})
              ($ toddler/portal

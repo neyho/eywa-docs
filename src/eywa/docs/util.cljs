@@ -8,6 +8,7 @@
    [toddler.i18n.time]
    [toddler.core :as toddler]
    [toddler.router :as router]
+   [toddler.md.context :as md.context]
    [shadow.css :refer [css]]))
 
 (defnc themed-image
@@ -21,7 +22,8 @@
     :or {width 400
          themed? true}
     :as props}]
-  (let [url (router/use-with-base url)]
+  (let [base (hooks/use-context md.context/base)
+        url (str base url)]
     ($ toddler/portal
        {:locator #(.getElementById js/document id)}
        ($ ui/row
@@ -47,7 +49,9 @@
         initialized? (hooks/use-ref nil)
         now (.now js/Date)
         theme (toddler/use-theme)
-        url (str url "_" theme ".png")]
+        url (str url "_" theme ".png")
+        base (hooks/use-context md.context/base)
+        url (str base url)]
     (hooks/use-effect
       [id]
       (letfn [(open! [] (set-opened! (fn [current] (not current))))
@@ -83,7 +87,7 @@
   (let [ww (toddler/use-window-width)
         [current set-current!] (hooks/use-state 0)
         width (min ww width)
-        base (router/use-with-base "")
+        base (hooks/use-context md.context/base)
         navigation-width (max (min 800 width) 400)
         navigation-height 60
         margin-top 10

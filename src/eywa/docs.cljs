@@ -8,6 +8,7 @@
    [toddler.layout :as layout]
    [toddler.i18n.time]
    [toddler.md.lazy :as md]
+   [toddler.md.context :as md.context]
    [toddler.docs :as docs]
    [toddler.core :as toddler]
    [toddler.material.outlined :as outlined]
@@ -20,21 +21,6 @@
    [eywa.docs.overview :refer [Overview]]
    [eywa.docs.util :as util]
    [shadow.css :refer [css]]))
-
-(defnc Intro
-  {:wrap [(router/wrap-rendered :eywa.intro)]}
-  []
-  (let [{:keys [width height]} (layout/use-container-dimensions)
-        docs-url (router/use-with-base "/intro.md")]
-    ($ ui/simplebar
-       {:style {:height height}}
-       ($ ui/row {:align :center}
-          ($ ui/column
-             {:style {:max-width (min width 800)}}
-             ($ md/watch-url {:url docs-url})
-             ($ toddler/portal
-                {:locator #(.getElementById js/document "in-short")}
-                ($ util/themed-image {:url "intro/in_short"})))))))
 
 (def components
   [{:id :eywa.overview
@@ -99,7 +85,8 @@
 (defnc logo
   []
   (let [theme (hooks/use-context app/theme)
-        logo (router/use-with-base (str "/../img/eywa_" theme ".svg"))
+        base (hooks/use-context md.context/base)
+        logo (str base "/img/eywa_" theme ".svg")
         desktop (css :flex :grow :justify-center :items-center {:min-height "100px"})
         layout (toddler/use-layout)
         mobile (css :ml-2 :flex :items-center {:max-height "32px"})]

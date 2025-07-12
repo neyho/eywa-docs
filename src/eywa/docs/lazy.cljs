@@ -55,13 +55,24 @@
            [{:id ::docs
              :name "Docs"
              :segment "docs"
-             :landing 5}])]}
+             :landing 10}])]}
   []
   (let [{:keys [pathname]} (router/use-location)
-        {go-to :go} (router/use-navigate)]
+        {go-to :go} (router/use-navigate)
+        base (hooks/use-context router/-base-)]
     (hooks/use-effect
       [pathname]
-      (when (#{"/docs" "/docs/"} pathname)
-        (go-to "/docs/intro")))
-    ($ router/Provider {:base "docs"}
+      (let [landings? (set
+                       (map
+                        (fn [path]
+                          (if (not-empty base)
+                            (str "/" base path)
+                            path))
+                        ["/docs" "/docs/"]))]
+        (when (landings? pathname)
+          (go-to "/eywa/docs/overview"))))
+    ($ router/Provider
+       {:base (if (not-empty base)
+                (str base "/docs")
+                "docs")}
        ($ _Docs))))

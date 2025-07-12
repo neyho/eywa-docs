@@ -799,31 +799,31 @@ html[data-theme="light"] hr {
 
 .container-block.tip .icon {
   /*background-image: url('/icons/tip.svg');*/
-  -webkit-mask-image: url('/icons/tip.svg');
-  mask-image: url('/icons/tip.svg');
+  -webkit-mask-image: url('/eywa/icons/tip.svg');
+  mask-image: url('/eywa/icons/tip.svg');
 }
 
 .container-block.warning .icon {
-  -webkit-mask-image: url('/icons/warning.svg');
-  mask-image: url('/icons/warning.svg');
+  -webkit-mask-image: url('/eywa/icons/warning.svg');
+  mask-image: url('/eywa/icons/warning.svg');
 }
 
 .container-block.note .icon {
   /*background-image: url('/icons/note.svg');*/
-  -webkit-mask-image: url('/icons/note.svg');
-  mask-image: url('/icons/note.svg');
+  -webkit-mask-image: url('/eywa/icons/note.svg');
+  mask-image: url('/eywa/icons/note.svg');
 }
 
 .container-block.info .icon {
   /*background-image: url('/icons/info.svg');*/
-  -webkit-mask-image: url('/icons/info.svg');
-  mask-image: url('/icons/info.svg');
+  -webkit-mask-image: url('/eywa/icons/info.svg');
+  mask-image: url('/eywa/icons/info.svg');
 }
 
 .container-block.danger .icon {
   /*background-image: url('/icons/info.svg');*/
-  -webkit-mask-image: url('/icons/danger.svg');
-  mask-image: url('/icons/danger.svg');
+  -webkit-mask-image: url('/eywa/icons/danger.svg');
+  mask-image: url('/eywa/icons/danger.svg');
 }
 
 

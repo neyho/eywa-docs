@@ -14,6 +14,7 @@
    [toddler.core :as toddler]
    [toddler.popup :as popup]
    [toddler.layout :as layout]
+   [toddler.md.lazy :as md]
    [toddler.ui.components :refer [components]]
    [toddler.ui.css :as ui.css]
    [toddler.notifications :as notifications]
@@ -102,9 +103,6 @@
            ::router/ROOT
            [{:id ::greeting
              :segment "greeting"
-             :landing 10}
-            {:id ::docs
-             :segment "docs"
              :landing 5}])]}
   []
   (let [{window-width :width
@@ -214,7 +212,7 @@
           ;; This will wrap default toddler components and
           ;; provide those components as toddler.ui/__commponents__
           ;; context
-          (ui/wrap-ui components)
+          (ui/wrap-ui (assoc components :markdown md/show))
           ;; Wraps toddler router relative to ROUTER_BASE
           ;; If you are serving assets at some URL different
           ;; from "/" than you should specify ROUTER_BASE
@@ -224,6 +222,7 @@
   []
   (let [app-mobile (toddler/use-window-width-test < 600)
         docs-mobile (toddler/use-window-width-test < 1000)]
+    (toddler/use-mouse-tracker)
     (<>
      (provider
       {:context app/layout

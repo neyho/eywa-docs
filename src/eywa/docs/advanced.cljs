@@ -34,7 +34,7 @@
   (let [ww (toddler/use-window-width)
         max-width (min 600 ww)]
     ($ md/watch-url
-       {:url (router/use-with-base "/advanced/environment.md")
+       {:url "/docs/advanced/environment.md"
         :style {:max-width max-width}})))
 
 (defnc Encryption
@@ -43,7 +43,7 @@
   (let [ww (toddler/use-window-width)
         max-width (min 600 ww)]
     ($ md/watch-url
-       {:url (router/use-with-base "/advanced/encryption.md")
+       {:url "/docs/advanced/encryption.md"
         :style {:max-width max-width}})))
 
 (defnc CLI
@@ -69,16 +69,16 @@
        {:style {:max-width max-width}
         :align :center}
        ($ md/watch-url
-          {:url (router/use-with-base "/advanced/cli.md")
+          {:url "/docs/advanced/cli.md"
            :style {:max-width max-width}})
        ($ util/mount-image
           {:id "eywa_core_bucket"
-           :url "/advanced/cli/eywa_core_bucket"
+           :url "/docs/advanced/cli/eywa_core_bucket"
            :className (css :my-4)
            :themed? false})
        ($ util/mount-image
           {:id "eywa_connect"
-           :url "/advanced/cli/eywa_connect"
+           :url "/docs/advanced/cli/eywa_connect"
            :className (css :my-4)
            :themed? false})
        ($ toddler/portal
@@ -91,14 +91,14 @@
                 "See what will happen!")))
        ($ util/mount-modal-image
           {:id "open-run-explanation"
-           :url "cli/eywa_client"
+           :url "/docs/advanced/cli/eywa_client"
            :className (css :p-6)
            :width (min 800 (- ww 100))}))))
 
 (defnc InGeneral
   {:wrap [(router/wrap-rendered :eywa.advanced true)]}
   []
-  ($ md/watch-url {:url (router/use-with-base "/advanced.md")}))
+  ($ md/watch-url {:url "/docs/advanced.md"}))
 
 (defnc Tour
   {:wrap [(router/wrap-rendered :eywa.advanced.tour)]}
@@ -114,13 +114,13 @@
        ($ util/tour
           {:width width
            :height height
-           :images ["/advanced/custom/app1.png"
-                    "/advanced/custom/app2.png"
-                    "/advanced/custom/app3.png"
-                    "/advanced/custom/app4.png"
-                    "/advanced/custom/app5.png"
-                    "/advanced/custom/app6.png"
-                    "/advanced/custom/app7.png"]}))))
+           :images ["/docs/advanced/custom/app1.png"
+                    "/docs/advanced/custom/app2.png"
+                    "/docs/advanced/custom/app3.png"
+                    "/docs/advanced/custom/app4.png"
+                    "/docs/advanced/custom/app5.png"
+                    "/docs/advanced/custom/app6.png"
+                    "/docs/advanced/custom/app7.png"]}))))
 
 (defnc Advanced
   {:wrap [(router/wrap-rendered :eywa.advanced)

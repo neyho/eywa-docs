@@ -35,5 +35,5 @@
           ($ ui/row
              {:style {:max-width max-width}}
              ($ md/watch-url
-                {:url (router/use-with-base "/iam.md")
+                {:url "/docs/iam.md"
                  :style {:max-width max-width}}))))))

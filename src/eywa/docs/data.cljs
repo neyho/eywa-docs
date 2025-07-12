@@ -14,6 +14,7 @@
    [toddler.router :as router]
    [toddler.search :as search]
    [toddler.md.lazy :as lazy]
+   [toddler.md.context :as md.context]
    [eywa.docs.util :as util]
    [shadow.css :refer [css]]))
 
@@ -24,20 +25,21 @@
         {ww :width
          wh :height} (toddler/use-window-dimensions)
         width (min (- ww 60) 1400)
-        height (min (- wh 60) 900)]
+        height (min (- wh 60) 900)
+        base (hooks/use-context md.context/base)]
     ($ ui/modal-dialog
        {:on-close #(back)
         :className (css :bg-transparent :border-0)}
        ($ util/tour
           {:width width
            :height height
-           :images ["/data/tour/1.png"
-                    "/data/tour/2.png"
-                    "/data/tour/3.png"
-                    "/data/tour/4.png"
-                    "/data/tour/5.png"
-                    "/data/tour/6.png"
-                    "/data/tour/7.png"]}))))
+           :images ["/docs/data/tour/1.png"
+                    "/docs/data/tour/2.png"
+                    "/docs/data/tour/3.png"
+                    "/docs/data/tour/4.png"
+                    "/docs/data/tour/5.png"
+                    "/docs/data/tour/6.png"
+                    "/docs/data/tour/7.png"]}))))
 
 (defnc Data
   {:wrap [(router/wrap-rendered :eywa.data)
@@ -73,16 +75,16 @@
              ($ Tour)
              ($ util/mount-image
                 {:id "entity"
-                 :url "/data/entity"
+                 :url "/docs/data/entity"
                  :className $image})
              ($ util/mount-image
                 {:id "relation"
-                 :url "/data/relation"
+                 :url "/docs/data/relation"
                  :className $image})
              ($ util/mount-image
                 {:id "recursive-relation"
-                 :url "/data/recursive_relation"
+                 :url "/docs/data/recursive_relation"
                  :className $image})
              ($ md/watch-url
-                {:url (router/use-with-base "/data.md")
+                {:url "/docs/data.md"
                  :style {:max-width max-width}}))))))
