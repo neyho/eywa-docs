@@ -157,7 +157,7 @@
                 "Visual")))
        ($ util/mount-modal-image
           {:id "open-hooks-visual"
-           :url "extend/hooks"
+           :url "docs/graphql/extend/hooks"
            :className (css :p-6)
            :width 400})
        ($ md/watch-url

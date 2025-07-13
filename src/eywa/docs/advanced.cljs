@@ -29,7 +29,13 @@
              :hash "platform"}
             {:id :eywa.advanced.environment.db
              :name "Database"
-             :hash "database"}])]}
+             :hash "database"}
+            {:id :eywa.advanced.environment.files
+             :name "Files"
+             :hash "file-storage"}
+            {:id :eywa.advanced.environment.trust-store
+             :name "Trust Store"
+             :hash "trust-store"}])]}
   []
   (let [ww (toddler/use-window-width)
         max-width (min 600 ww)]

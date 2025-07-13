@@ -169,3 +169,126 @@ you won't make it if pool size is large.
 
 **In production increase this number for better performance!**
 :::
+
+## File Storage
+Configure S3-compatible storage for file operations. EYWA supports both AWS S3 
+and MinIO for file storage. These variables configure the storage backend used 
+for file uploads, downloads, and management.
+
+:::note EYWA_STORAGE_ENDPOINT
+S3-compatible storage endpoint URL.
+
+For MinIO (local development): `http://localhost:9000`
+For AWS S3: `https://s3.amazonaws.com` or region-specific endpoint
+
+Default: `http://localhost:9000`
+:::
+
+:::note EYWA_STORAGE_ACCESS_KEY
+Access key for S3-compatible storage authentication.
+
+For MinIO (local development): `minioadmin`
+For AWS S3: Your AWS access key ID
+
+Default: `minioadmin`
+:::
+
+:::note EYWA_STORAGE_SECRET_KEY
+Secret key for S3-compatible storage authentication.
+
+For MinIO (local development): `minioadmin`
+For AWS S3: Your AWS secret access key
+
+Default: `minioadmin`
+:::
+
+:::note EYWA_STORAGE_REGION
+AWS region or region name for S3-compatible storage.
+
+Examples: `us-east-1`, `eu-west-1`, `ap-southeast-1`
+
+Default: `us-east-1`
+:::
+
+:::note EYWA_STORAGE_BUCKET
+Storage bucket name where files will be stored.
+
+The bucket will be created automatically if it doesn't exist.
+
+Default: `eywa-files`
+:::
+
+:::note EYWA_STORAGE_EXPIRY_MINUTES
+Expiry time in minutes for presigned URLs used for file uploads and downloads.
+
+Shorter times improve security but may cause issues with large file uploads.
+
+Default: `15`
+:::
+
+:::tip MinIO Setup
+For local development, you can run MinIO using Docker:
+
+```shell
+docker run -p 9000:9000 -p 9001:9001 \
+  -e "MINIO_ROOT_USER=minioadmin" \
+  -e "MINIO_ROOT_PASSWORD=minioadmin" \
+  minio/minio server /data --console-address ":9001"
+```
+
+Then access the MinIO console at `http://localhost:9001`
+:::
+
+## Trust Store
+Configure custom SSL/TLS trust stores for enterprise environments that use internal Certificate Authorities (CA). 
+These variables allow EYWA to validate SSL certificates signed by your organization's internal CA.
+
+:::note TRUST_STORE_PATH
+Path to the Java keystore file containing trusted certificates.
+
+This should point to a JKS (Java KeyStore) file that includes your organization's 
+internal CA certificates and any other trusted certificates.
+
+Example: `/opt/eywa/security/truststore.jks`
+:::
+
+:::note TRUST_STORE_PASSWORD
+Password for accessing the trust store specified in `TRUST_STORE_PATH`.
+
+Keep this password secure and consider using environment variable injection 
+or secrets management systems in production.
+:::
+
+:::tip Creating a Trust Store
+To create a new trust store and add your internal CA certificate:
+
+1. **Create a new keystore:**
+   ```shell
+   keytool -genkey -alias temp -keystore truststore.jks -storepass mypassword
+   keytool -delete -alias temp -keystore truststore.jks -storepass mypassword
+   ```
+
+2. **Add your CA certificate:**
+   ```shell
+   keytool -importcert -alias mycompany-ca -file ca-certificate.crt \
+     -keystore truststore.jks -storepass mypassword -noprompt
+   ```
+
+3. **Verify the certificate was added:**
+   ```shell
+   keytool -list -keystore truststore.jks -storepass mypassword
+   ```
+
+4. **Set environment variables:**
+   ```shell
+   export TRUST_STORE_PATH="/path/to/truststore.jks"
+   export TRUST_STORE_PASSWORD="mypassword"
+   ```
+:::
+
+:::warning Certificate Management
+- Always verify certificate fingerprints before importing
+- Keep your trust store file secure with appropriate file permissions (600)
+- Regularly update certificates before they expire
+- In production, use secrets management for the trust store password
+:::
