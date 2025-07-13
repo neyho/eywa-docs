@@ -106,6 +106,9 @@
                :target-dir "target/icons"})
   (b/copy-dir {:src-dirs ["web/img"]
                :target-dir "target/img"})
+
+  (b/copy-file {:src "web/favicon.svg"
+                :target "target/favicon.svg"})
   ;;
   (let [{:keys [mds output]} (search-index-config "/eywa/docs")
         _ (println "Refreshing index file at " (str output))
